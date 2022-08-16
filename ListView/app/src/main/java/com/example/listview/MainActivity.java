@@ -1,13 +1,20 @@
 package com.example.listview;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.text.BreakIterator;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,20 +22,44 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ListView listTodos = findViewById(R.id.list);
+        ArrayList<String> todos = new ArrayList<String>();
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_1, todos);
+        listTodos.setAdapter(arrayAdapter);
+//      Arraylist to store items
+        Button submit = findViewById(R.id.addBtn);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText text = findViewById(R.id.name);
+                todos.add(text.getText().toString());
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
 
-        String [] items = {"Pen", "Book", "Chair", "Mouse", "Carpet", "Laptop",
-        "Window","Charger", "Spray"
-        };
-        ListView listView = findViewById(R.id.list);
-        ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_dropdown_item_1line, items);
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listTodos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String text = "Clicked " + items[i];
-                Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show();
-             }
+                new AlertDialog.Builder(listTodos.getContext())
+                        .setTitle("Delete Recod")
+                        .setMessage("Do you really want to deete this task!")
+                        .setCancelable(false)
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                todos.remove(i);
+                                arrayAdapter.notifyDataSetChanged();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
+            }
         });
     }
 }
