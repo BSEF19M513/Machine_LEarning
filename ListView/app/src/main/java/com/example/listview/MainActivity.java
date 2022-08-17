@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ListView listTodos = findViewById(R.id.list);
+        ListView todos = findViewById(R.id.list);
         ArrayList<String> todos = new ArrayList<String>();
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_list_item_1, todos);
-        listTodos.setAdapter(arrayAdapter);
+        todos.setAdapter(arrayAdapter);
 //      Arraylist to store items
         Button submit = findViewById(R.id.addBtn);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listTodos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        todos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                new AlertDialog.Builder(listTodos.getContext())
+                new AlertDialog.Builder(todos.getContext())
                         .setTitle("Delete Recod")
                         .setMessage("Do you really want to deete this task!")
                         .setCancelable(false)
