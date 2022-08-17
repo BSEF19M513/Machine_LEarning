@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 EditText text = findViewById(R.id.name);
                 todos.add(text.getText().toString());
-                arrayAdapter.notifyDataSetChanged();
             }
         });
 
@@ -42,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 new AlertDialog.Builder(todos.getContext())
-                        .setTitle("Delete Recod")
-                        .setMessage("Do you really want to deete this task!")
+                        .setTitle("Delete Record Successfully ")
+                        .setMessage("Do you really want to delete this record?")
                         .setCancelable(false)
                         .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                             @Override
