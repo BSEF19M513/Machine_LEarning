@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    String Colors[] = {"Red", "Green", "Blue"};
+    Integer  numbers[] = {1,2,3};
     ArrayList<Integer> items = new ArrayList();
 
     @Override
@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String Colors[] = {"Red", "Green", "Blue"};
+    Integer  numbers[] = {1,2,3};
                 ArrayList<Integer> items = new ArrayList();
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-                dialog.setTitle("Set Options")
+                dialog.setTitle("Select Options")
                         .setMultiChoiceItems(Colors, null, new DialogInterface.OnMultiChoiceClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i, boolean b) {
