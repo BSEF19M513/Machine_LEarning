@@ -77,37 +77,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String name_txt = name.getText().toString();
-                String id_txt = id.getText().toString();
-                String section_txt = section.getText().toString();
-
-                Boolean checkUpdateData = helper.updateRecord(name_txt, id_txt, section_txt);
-                if(checkUpdateData)
-                    Toast.makeText(MainActivity.this, "Entry Updated", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(MainActivity.this, "New Entry Not Updated", Toast.LENGTH_SHORT).show();
-                helper.close();
-            }
-        });
-
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name_txt = name.getText().toString();
-                Boolean checkDeleteData = helper.deleteRecord(name_txt);
-                if(checkDeleteData)
-                    Toast.makeText(MainActivity.this, "Entry Deleted", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(MainActivity.this, "Entry Not Deleted", Toast.LENGTH_SHORT).show();
-
-                helper.close();
-            }
-        });
-
     }
 
 }
