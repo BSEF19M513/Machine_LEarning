@@ -56,4 +56,25 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Boolean updateRecord(String name, String id, String section)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("NAME", name);
+        contentValues.put("ID", id);
+        contentValues.put("SECTION", section);
+        Cursor cursor = DB.rawQuery("Select * from Records where name = ?", new String[]{name});
+        if (cursor.getCount() > 0) {
+            long result = DB.update("Records", contentValues, "name=?", new String[]{name});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    
 }
