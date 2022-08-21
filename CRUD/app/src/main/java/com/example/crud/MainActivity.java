@@ -94,6 +94,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name_txt = name.getText().toString();
+                Boolean checkDeleteData = helper.deleteRecord(name_txt);
+                if(checkDeleteData)
+                    Toast.makeText(MainActivity.this, "Entry Deleted", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(MainActivity.this, "Entry Not Deleted", Toast.LENGTH_SHORT).show();
+
+                helper.close();
+            }
+        });
+
     }
 
 }
