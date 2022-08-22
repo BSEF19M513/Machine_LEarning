@@ -76,5 +76,19 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    
+    public Boolean deleteRecord (String name)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select * from Records where name = ?", new String[]{name});
+        if (cursor.getCount() > 0) {
+            long result = DB.delete("Records", "name=?", new String[]{name});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 }
