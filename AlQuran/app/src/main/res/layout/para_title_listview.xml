@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00BCD4"
+    android:paddingVertical="7dp">
+
+    <TextView
+        android:id="@+id/para_title_english"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:paddingLeft="10dp"
+        android:text="Alif Lam Meem"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/para_title_urdu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:paddingRight="25dp"
+        android:text="الم "
+        android:textColor="#FFFFFF"
+        android:textColorHint="#236125"
+        android:textFontWeight="500"
+        android:textSize="20dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="7dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
